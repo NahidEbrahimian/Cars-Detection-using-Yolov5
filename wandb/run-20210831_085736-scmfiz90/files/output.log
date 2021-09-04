@@ -1,0 +1,39 @@
+[34m[1mtrain: [39m[22mweights=yolov5s.pt, cfg=, data=coco128.yaml, hyp=data/hyps/hyp.scratch.yaml, epochs=30, batch_size=8, imgsz=640, rect=False, resume=False, nosave=False, noval=False, noautoanchor=False, evolve=None, bucket=, cache=None, image_weights=False, device=, multi_scale=False, single_cls=False, adam=False, sync_bn=False, workers=8, project=runs/train, entity=None, name=exp, exist_ok=False, quad=False, linear_lr=False, label_smoothing=0.0, upload_dataset=False, bbox_interval=-1, save_period=-1, artifact_alias=latest, local_rank=-1, freeze=0, patience=30
+[34m[1mgithub: [39m[22mskipping check (not a git repository), for updates see https://github.com/ultralytics/yolov5
+[31m[1mrequirements:[39m[22m PyYAML>=5.3.1 not found and is required by YOLOv5, attempting auto-update...
+Collecting PyYAML>=5.3.1
+  Downloading PyYAML-5.4.1-cp37-cp37m-manylinux1_x86_64.whl (636 kB)
+Installing collected packages: PyYAML
+  Attempting uninstall: PyYAML
+    Found existing installation: PyYAML 3.13
+    Uninstalling PyYAML-3.13:
+      Successfully uninstalled PyYAML-3.13
+Successfully installed PyYAML-5.4.1
+[31m[1mrequirements:[39m[22m 1 package updated per /content/drive/My Drive/YoloObjectDetection/yolov5/requirements.txt
+[31m[1mrequirements:[39m[22m ⚠️ [1mRestart runtime or rerun command for updates to take effect
+YOLOv5 🚀 2021-8-29 torch 1.9.0+cu102 CUDA:0 (Tesla K80, 11441.1875MB)
+Traceback (most recent call last):
+  File "yolov5/train.py", line 611, in <module>
+    main(opt)
+  File "yolov5/train.py", line 509, in main
+    train(opt.hyp, opt, device)
+  File "yolov5/train.py", line 73, in train
+    hyp = yaml.safe_load(f)  # load hyps dict
+  File "/usr/local/lib/python3.7/dist-packages/yaml/__init__.py", line 94, in safe_load
+    and produce corresponding representation trees.
+  File "/usr/local/lib/python3.7/dist-packages/yaml/__init__.py", line 70, in load
+    """
+  File "/usr/local/lib/python3.7/dist-packages/yaml/loader.py", line 24, in __init__
+    Reader.__init__(self, stream)
+  File "/usr/local/lib/python3.7/dist-packages/yaml/reader.py", line 85, in __init__
+    self.determine_encoding()
+  File "/usr/local/lib/python3.7/dist-packages/yaml/reader.py", line 135, in determine_encoding
+    self.update(1)
+  File "/usr/local/lib/python3.7/dist-packages/yaml/reader.py", line 169, in update
+    self.check_printable(data)
+  File "/usr/local/lib/python3.7/dist-packages/yaml/reader.py", line 144, in check_printable
+    'unicode', "special characters are not allowed")
+yaml.reader.ReaderError: unacceptable character #x1f680: special characters are not allowed
+  in "./yolov5/data/hyps/hyp.scratch.yaml", position 9
+Drive already mounted at /content/drive; to attempt to forcibly remount, call drive.mount("/content/drive", force_remount=True).
+/content/drive/MyDrive/YoloObjectDetection

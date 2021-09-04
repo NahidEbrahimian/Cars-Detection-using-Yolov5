@@ -1,0 +1,331 @@
+
+Downloading https://github.com/ultralytics/yolov5/releases/download/v5.0/yolov5m.pt to yolov5m.pt...
+100% 41.1M/41.1M [00:00<00:00, 45.0MB/s]
+Overriding model.yaml nc=80 with nc=5
+                 from  n    params  module                                  arguments
+  0                -1  1      5280  models.common.Focus                     [3, 48, 3]
+  1                -1  1     41664  models.common.Conv                      [48, 96, 3, 2]
+  2                -1  2     65280  models.common.C3                        [96, 96, 2]
+  3                -1  1    166272  models.common.Conv                      [96, 192, 3, 2]
+  4                -1  6    629760  models.common.C3                        [192, 192, 6]
+  5                -1  1    664320  models.common.Conv                      [192, 384, 3, 2]
+  6                -1  6   2512896  models.common.C3                        [384, 384, 6]
+  7                -1  1   2655744  models.common.Conv                      [384, 768, 3, 2]
+  8                -1  1   1476864  models.common.SPP                       [768, 768, [5, 9, 13]]
+  9                -1  2   4134912  models.common.C3                        [768, 768, 2, False]
+ 10                -1  1    295680  models.common.Conv                      [768, 384, 1, 1]
+ 11                -1  1         0  torch.nn.modules.upsampling.Upsample    [None, 2, 'nearest']
+ 12           [-1, 6]  1         0  models.common.Concat                    [1]
+ 13                -1  2   1182720  models.common.C3                        [768, 384, 2, False]
+ 14                -1  1     74112  models.common.Conv                      [384, 192, 1, 1]
+ 15                -1  1         0  torch.nn.modules.upsampling.Upsample    [None, 2, 'nearest']
+ 16           [-1, 4]  1         0  models.common.Concat                    [1]
+ 17                -1  2    296448  models.common.C3                        [384, 192, 2, False]
+ 18                -1  1    332160  models.common.Conv                      [192, 192, 3, 2]
+ 19          [-1, 14]  1         0  models.common.Concat                    [1]
+ 20                -1  2   1035264  models.common.C3                        [384, 384, 2, False]
+ 21                -1  1   1327872  models.common.Conv                      [384, 384, 3, 2]
+ 22          [-1, 10]  1         0  models.common.Concat                    [1]
+ 23                -1  2   4134912  models.common.C3                        [768, 768, 2, False]
+ 24      [17, 20, 23]  1     40410  models.yolo.Detect                      [5, [[10, 13, 16, 30, 33, 23], [30, 61, 62, 45, 59, 119], [116, 90, 156, 198, 373, 326]], [192, 384, 768]]
+Model Summary: 391 layers, 21072570 parameters, 21072570 gradients
+Transferred 500/506 items from yolov5m.pt
+Scaled weight_decay = 0.0005
+[34m[1moptimizer:[39m[22m SGD with parameter groups 83 weight, 86 weight (no decay), 86 bias
+[34m[1malbumentations: [39m[22mversion 1.0.3 required by YOLOv5, but version 0.1.12 is currently installed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[34m[1mtrain: [39m[22mScanning '/content/drive/MyDrive/Yolov5ObjectDetection/Dataset/Train/labels' images and labels...1600 found, 10 missing, 0 empty, 0 corrupted: 100% 1610/1610 [05:40<00:00,  4.73it/s]
+[34m[1mtrain: [39m[22mNew cache created: /content/drive/MyDrive/Yolov5ObjectDetection/Dataset/Train/labels.cache
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[34m[1mval: [39m[22mScanning '/content/drive/MyDrive/Yolov5ObjectDetection/Dataset/Val/labels' images and labels...500 found, 0 missing, 0 empty, 0 corrupted: 100% 500/500 [01:41<00:00,  4.92it/s]
+[34m[1mval: [39m[22mNew cache created: /content/drive/MyDrive/Yolov5ObjectDetection/Dataset/Val/labels.cache
+Plotting labels...
+[34m[1mautoanchor: [39m[22mAnalyzing anchors... anchors/target = 2.26, Best Possible Recall (BPR) = 1.0000
+Image sizes 640 train, 640 val
+Using 2 dataloader workers
+Logging results to runs/train/exp18
+Starting training for 30 epochs...
+     Epoch   gpu_mem       box       obj       cls    labels  img_size
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      0/29        0G   0.07436   0.03028   0.03761        17       640:  14% 28/202 [14:33<1:30:27, 31.19s/it]
+Traceback (most recent call last):
+  File "yolov5/train.py", line 611, in <module>
+    main(opt)
+  File "yolov5/train.py", line 509, in main
+    train(opt.hyp, opt, device)
+  File "yolov5/train.py", line 311, in train
+    pred = model(imgs)  # forward
+  File "/usr/local/lib/python3.7/dist-packages/torch/nn/modules/module.py", line 1051, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/content/drive/My Drive/YoloObjectDetection/yolov5/models/yolo.py", line 123, in forward
+    return self.forward_once(x, profile, visualize)  # single-scale inference, train
+  File "/content/drive/My Drive/YoloObjectDetection/yolov5/models/yolo.py", line 155, in forward_once
+    x = m(x)  # run
+  File "/usr/local/lib/python3.7/dist-packages/torch/nn/modules/module.py", line 1051, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/content/drive/My Drive/YoloObjectDetection/yolov5/models/common.py", line 136, in forward
+    return self.cv3(torch.cat((self.m(self.cv1(x)), self.cv2(x)), dim=1))
+  File "/usr/local/lib/python3.7/dist-packages/torch/nn/modules/module.py", line 1051, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/torch/nn/modules/container.py", line 139, in forward
+    input = module(input)
+  File "/usr/local/lib/python3.7/dist-packages/torch/nn/modules/module.py", line 1051, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/content/drive/My Drive/YoloObjectDetection/yolov5/models/common.py", line 102, in forward
+    return x + self.cv2(self.cv1(x)) if self.add else self.cv2(self.cv1(x))
+  File "/usr/local/lib/python3.7/dist-packages/torch/nn/modules/module.py", line 1051, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/content/drive/My Drive/YoloObjectDetection/yolov5/models/common.py", line 44, in forward
+    return self.act(self.bn(self.conv(x)))
+  File "/usr/local/lib/python3.7/dist-packages/torch/nn/modules/module.py", line 1051, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/torch/nn/modules/conv.py", line 443, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+  File "/usr/local/lib/python3.7/dist-packages/torch/nn/modules/conv.py", line 440, in _conv_forward
+    self.padding, self.dilation, self.groups)
+KeyboardInterrupt

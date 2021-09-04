@@ -1,0 +1,27 @@
+{
+    "os": "Linux-5.4.104+-x86_64-with-Ubuntu-18.04-bionic",
+    "python": "3.7.11",
+    "heartbeatAt": "2021-08-31T04:03:20.418634",
+    "startedAt": "2021-08-31T04:03:17.279672",
+    "docker": null,
+    "cpu_count": 2,
+    "cuda": "11.0.228",
+    "args": [
+        "--img",
+        "224",
+        "--batch",
+        "8",
+        "--epochs",
+        "30",
+        "--data",
+        "coco128.yaml",
+        "--weights",
+        "yolov5s.pt"
+    ],
+    "state": "running",
+    "program": "yolov5/train.py",
+    "codePath": "yolov5/train.py",
+    "host": "159a795fab29",
+    "username": "root",
+    "executable": "/usr/bin/python3"
+}

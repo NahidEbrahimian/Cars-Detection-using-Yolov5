@@ -1,0 +1,70 @@
+Overriding model.yaml nc=80 with nc=5
+                 from  n    params  module                                  arguments
+  0                -1  1      3520  models.common.Focus                     [3, 32, 3]
+  1                -1  1     18560  models.common.Conv                      [32, 64, 3, 2]
+  2                -1  1     18816  models.common.C3                        [64, 64, 1]
+  3                -1  1     73984  models.common.Conv                      [64, 128, 3, 2]
+  4                -1  3    156928  models.common.C3                        [128, 128, 3]
+  5                -1  1    295424  models.common.Conv                      [128, 256, 3, 2]
+  6                -1  3    625152  models.common.C3                        [256, 256, 3]
+  7                -1  1   1180672  models.common.Conv                      [256, 512, 3, 2]
+  8                -1  1    656896  models.common.SPP                       [512, 512, [5, 9, 13]]
+  9                -1  1   1182720  models.common.C3                        [512, 512, 1, False]
+ 10                -1  1    131584  models.common.Conv                      [512, 256, 1, 1]
+ 11                -1  1         0  torch.nn.modules.upsampling.Upsample    [None, 2, 'nearest']
+ 12           [-1, 6]  1         0  models.common.Concat                    [1]
+ 13                -1  1    361984  models.common.C3                        [512, 256, 1, False]
+ 14                -1  1     33024  models.common.Conv                      [256, 128, 1, 1]
+ 15                -1  1         0  torch.nn.modules.upsampling.Upsample    [None, 2, 'nearest']
+ 16           [-1, 4]  1         0  models.common.Concat                    [1]
+ 17                -1  1     90880  models.common.C3                        [256, 128, 1, False]
+ 18                -1  1    147712  models.common.Conv                      [128, 128, 3, 2]
+ 19          [-1, 14]  1         0  models.common.Concat                    [1]
+ 20                -1  1    296448  models.common.C3                        [256, 256, 1, False]
+ 21                -1  1    590336  models.common.Conv                      [256, 256, 3, 2]
+ 22          [-1, 10]  1         0  models.common.Concat                    [1]
+ 23                -1  1   1182720  models.common.C3                        [512, 512, 1, False]
+ 24      [17, 20, 23]  1     26970  models.yolo.Detect                      [5, [[10, 13, 16, 30, 33, 23], [30, 61, 62, 45, 59, 119], [116, 90, 156, 198, 373, 326]], [128, 256, 512]]
+Model Summary: 283 layers, 7074330 parameters, 7074330 gradients, 16.4 GFLOPs
+Transferred 356/362 items from yolov5s.pt
+Scaled weight_decay = 0.0005
+[34m[1moptimizer:[39m[22m SGD with parameter groups 59 weight, 62 weight (no decay), 62 bias
+[34m[1malbumentations: [39m[22mversion 1.0.3 required by YOLOv5, but version 0.1.12 is currently installed
+[34m[1mtrain: [39m[22mScanning '/content/drive/MyDrive/Yolov5ObjectDetection/Dataset/Train/labels.cache' images and labels... 1600 found, 10 missing, 0 empty, 0 corrupted: 100% 1610/1610 [00:00<?, ?it/s]
+[34m[1mval: [39m[22mScanning '/content/drive/MyDrive/Yolov5ObjectDetection/Dataset/Val/labels.cache' images and labels... 500 found, 0 missing, 0 empty, 0 corrupted: 100% 500/500 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+Plotting labels...
+[34m[1mautoanchor: [39m[22mAnalyzing anchors... anchors/target = 2.26, Best Possible Recall (BPR) = 1.0000
+Image sizes 640 train, 640 val
+Using 2 dataloader workers
+Logging results to runs/train/exp
+Starting training for 30 epochs...
+     Epoch   gpu_mem       box       obj       cls    labels  img_size
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      0/29     1.78G   0.08165   0.03214   0.03857        19       640:  10% 21/202 [00:46<06:44,  2.24s/it]
+Traceback (most recent call last):
+  File "yolov5/train.py", line 611, in <module>
+    main(opt)
+  File "yolov5/train.py", line 509, in main
+    train(opt.hyp, opt, device)
+  File "yolov5/train.py", line 312, in train
+    loss, loss_items = compute_loss(pred, targets.to(device))  # loss scaled by batch_size
+KeyboardInterrupt

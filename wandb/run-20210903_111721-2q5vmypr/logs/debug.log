@@ -1,0 +1,36 @@
+2021-09-03 11:17:21,252 INFO    MainThread:75 [wandb_setup.py:_flush():69] setting env: {}
+2021-09-03 11:17:21,253 INFO    MainThread:75 [wandb_setup.py:_flush():69] setting login settings: {}
+2021-09-03 11:17:21,253 INFO    MainThread:75 [wandb_setup.py:_flush():69] setting login settings: {'api_key': '2ad32f3610515f9a3f89d3c177d5ce2690622d49'}
+2021-09-03 11:17:21,254 INFO    MainThread:75 [wandb_init.py:_log_setup():342] Logging user logs to /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/logs/debug.log
+2021-09-03 11:17:21,254 INFO    MainThread:75 [wandb_init.py:_log_setup():343] Logging internal logs to /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/logs/debug-internal.log
+2021-09-03 11:17:21,255 INFO    MainThread:75 [wandb_init.py:_jupyter_setup():294] configuring jupyter hooks <wandb.sdk.wandb_init._WandbInit object at 0x7ff2a05cac50>
+2021-09-03 11:17:21,256 INFO    MainThread:75 [wandb_init.py:init():375] calling init triggers
+2021-09-03 11:17:21,256 INFO    MainThread:75 [wandb_init.py:init():382] wandb.init called with sweep_config: {}
+config: {}
+2021-09-03 11:17:21,256 INFO    MainThread:75 [wandb_init.py:init():424] starting backend
+2021-09-03 11:17:21,257 INFO    MainThread:75 [backend.py:_multiprocessing_setup():72] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2021-09-03 11:17:21,279 INFO    MainThread:75 [backend.py:ensure_launched():135] starting backend process...
+2021-09-03 11:17:21,289 INFO    MainThread:75 [backend.py:ensure_launched():140] started backend process with pid: 295
+2021-09-03 11:17:21,300 INFO    MainThread:75 [wandb_init.py:init():429] backend started and connected
+2021-09-03 11:17:21,378 INFO    MainThread:75 [wandb_run.py:_label_probe_notebook():815] probe notebook
+2021-09-03 11:17:24,278 INFO    MainThread:75 [wandb_init.py:init():477] updated telemetry
+2021-09-03 11:17:24,279 INFO    MainThread:75 [wandb_init.py:init():500] communicating current version
+2021-09-03 11:17:24,352 INFO    MainThread:75 [wandb_init.py:init():505] got version response 
+2021-09-03 11:17:24,353 INFO    MainThread:75 [wandb_init.py:init():513] communicating run to backend with 30 second timeout
+2021-09-03 11:17:24,424 INFO    MainThread:75 [wandb_init.py:init():540] starting run threads in backend
+2021-09-03 11:17:25,889 INFO    MainThread:75 [wandb_run.py:_console_start():1601] atexit reg
+2021-09-03 11:17:25,898 INFO    MainThread:75 [wandb_run.py:_redirect():1475] redirect: SettingsConsole.WRAP
+2021-09-03 11:17:25,899 INFO    MainThread:75 [wandb_run.py:_redirect():1512] Wrapping output streams.
+2021-09-03 11:17:25,900 INFO    MainThread:75 [wandb_run.py:_redirect():1536] Redirects installed.
+2021-09-03 11:17:25,900 INFO    MainThread:75 [wandb_init.py:init():565] run started, returning control to user process
+2021-09-03 11:17:25,905 INFO    MainThread:75 [wandb_init.py:_pause_backend():256] pausing backend
+2021-09-03 11:17:25,910 INFO    MainThread:75 [jupyter.py:save_ipynb():298] not saving jupyter notebook
+2021-09-03 11:17:30,529 INFO    MainThread:75 [wandb_init.py:_resume_backend():265] resuming backend
+2021-09-03 11:18:19,886 INFO    MainThread:75 [wandb_init.py:_pause_backend():256] pausing backend
+2021-09-03 11:18:19,887 INFO    MainThread:75 [jupyter.py:save_ipynb():298] not saving jupyter notebook
+2021-09-03 11:18:19,896 INFO    MainThread:75 [wandb_init.py:_resume_backend():265] resuming backend
+2021-09-03 11:20:54,733 INFO    MainThread:75 [wandb_init.py:_pause_backend():256] pausing backend
+2021-09-03 11:20:54,734 INFO    MainThread:75 [jupyter.py:save_ipynb():298] not saving jupyter notebook
+2021-09-03 11:21:48,124 INFO    MainThread:75 [wandb_run.py:_atexit_cleanup():1571] got exitcode: 0
+2021-09-03 11:21:48,127 INFO    MainThread:75 [wandb_run.py:_restore():1543] restore
+2021-09-03 11:21:48,760 INFO    MainThread:75 [wandb_run.py:_restore():1543] restore

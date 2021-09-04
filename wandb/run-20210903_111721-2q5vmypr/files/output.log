@@ -1,0 +1,233 @@
+
+Requirement already satisfied: matplotlib>=3.2.2 in /usr/local/lib/python3.7/dist-packages (from -r yolov5/requirements.txt (line 4)) (3.2.2)
+Collecting matplotlib>=3.2.2
+  Downloading matplotlib-3.4.3-cp37-cp37m-manylinux1_x86_64.whl (10.3 MB)
+     |████████████████████████████████| 10.3 MB 5.1 MB/s
+[?25hRequirement already satisfied: numpy>=1.18.5 in /usr/local/lib/python3.7/dist-packages (from -r yolov5/requirements.txt (line 5)) (1.19.5)
+Collecting numpy>=1.18.5
+  Downloading numpy-1.21.2-cp37-cp37m-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (15.7 MB)
+     |████████████████████████████████| 15.7 MB 181 kB/s
+[?25hRequirement already satisfied: opencv-python>=4.1.2 in /usr/local/lib/python3.7/dist-packages (from -r yolov5/requirements.txt (line 6)) (4.1.2.30)
+Collecting opencv-python>=4.1.2
+  Downloading opencv_python-4.5.3.56-cp37-cp37m-manylinux2014_x86_64.whl (49.9 MB)
+     |████████████████████████████████| 49.9 MB 14 kB/s
+[?25hRequirement already satisfied: Pillow in /usr/local/lib/python3.7/dist-packages (from -r yolov5/requirements.txt (line 7)) (7.1.2)
+Collecting Pillow
+  Downloading Pillow-8.3.2-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.0 MB)
+     |████████████████████████████████| 3.0 MB 27.7 MB/s
+[?25hCollecting PyYAML>=5.3.1
+  Downloading PyYAML-5.4.1-cp37-cp37m-manylinux1_x86_64.whl (636 kB)
+     |████████████████████████████████| 636 kB 22.7 MB/s
+[?25hRequirement already satisfied: scipy>=1.4.1 in /usr/local/lib/python3.7/dist-packages (from -r yolov5/requirements.txt (line 9)) (1.4.1)
+Collecting scipy>=1.4.1
+  Downloading scipy-1.7.1-cp37-cp37m-manylinux_2_5_x86_64.manylinux1_x86_64.whl (28.5 MB)
+
+     |████████████████████████████████| 28.5 MB 42 kB/s
+[?25hRequirement already satisfied: torch>=1.7.0 in /usr/local/lib/python3.7/dist-packages (from -r yolov5/requirements.txt (line 10)) (1.9.0+cu102)
+Requirement already satisfied: torchvision>=0.8.1 in /usr/local/lib/python3.7/dist-packages (from -r yolov5/requirements.txt (line 11)) (0.10.0+cu102)
+Requirement already satisfied: tqdm>=4.41.0 in /usr/local/lib/python3.7/dist-packages (from -r yolov5/requirements.txt (line 12)) (4.62.0)
+Collecting tqdm>=4.41.0
+  Downloading tqdm-4.62.2-py2.py3-none-any.whl (76 kB)
+     |████████████████████████████████| 76 kB 4.9 MB/s
+[?25hRequirement already satisfied: tensorboard>=2.4.1 in /usr/local/lib/python3.7/dist-packages (from -r yolov5/requirements.txt (line 15)) (2.6.0)
+Requirement already satisfied: seaborn>=0.11.0 in /usr/local/lib/python3.7/dist-packages (from -r yolov5/requirements.txt (line 19)) (0.11.1)
+Collecting seaborn>=0.11.0
+  Downloading seaborn-0.11.2-py3-none-any.whl (292 kB)
+     |████████████████████████████████| 292 kB 44.8 MB/s
+[?25hRequirement already satisfied: pandas in /usr/local/lib/python3.7/dist-packages (from -r yolov5/requirements.txt (line 20)) (1.1.5)
+Collecting pandas
+  Downloading pandas-1.3.2-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (11.3 MB)
+     |████████████████████████████████| 11.3 MB 45.5 MB/s
+[?25hCollecting thop
+  Downloading thop-0.0.31.post2005241907-py3-none-any.whl (8.7 kB)
+Requirement already satisfied: cycler>=0.10 in /usr/local/lib/python3.7/dist-packages (from matplotlib>=3.2.2->-r yolov5/requirements.txt (line 4)) (0.10.0)
+Requirement already satisfied: python-dateutil>=2.7 in /usr/local/lib/python3.7/dist-packages (from matplotlib>=3.2.2->-r yolov5/requirements.txt (line 4)) (2.8.2)
+Requirement already satisfied: kiwisolver>=1.0.1 in /usr/local/lib/python3.7/dist-packages (from matplotlib>=3.2.2->-r yolov5/requirements.txt (line 4)) (1.3.1)
+Requirement already satisfied: pyparsing>=2.2.1 in /usr/local/lib/python3.7/dist-packages (from matplotlib>=3.2.2->-r yolov5/requirements.txt (line 4)) (2.4.7)
+Requirement already satisfied: typing-extensions in /usr/local/lib/python3.7/dist-packages (from torch>=1.7.0->-r yolov5/requirements.txt (line 10)) (3.7.4.3)
+Requirement already satisfied: markdown>=2.6.8 in /usr/local/lib/python3.7/dist-packages (from tensorboard>=2.4.1->-r yolov5/requirements.txt (line 15)) (3.3.4)
+Requirement already satisfied: tensorboard-plugin-wit>=1.6.0 in /usr/local/lib/python3.7/dist-packages (from tensorboard>=2.4.1->-r yolov5/requirements.txt (line 15)) (1.8.0)
+Requirement already satisfied: wheel>=0.26 in /usr/local/lib/python3.7/dist-packages (from tensorboard>=2.4.1->-r yolov5/requirements.txt (line 15)) (0.37.0)
+Requirement already satisfied: tensorboard-data-server<0.7.0,>=0.6.0 in /usr/local/lib/python3.7/dist-packages (from tensorboard>=2.4.1->-r yolov5/requirements.txt (line 15)) (0.6.1)
+Requirement already satisfied: google-auth<2,>=1.6.3 in /usr/local/lib/python3.7/dist-packages (from tensorboard>=2.4.1->-r yolov5/requirements.txt (line 15)) (1.34.0)
+Requirement already satisfied: protobuf>=3.6.0 in /usr/local/lib/python3.7/dist-packages (from tensorboard>=2.4.1->-r yolov5/requirements.txt (line 15)) (3.17.3)
+Requirement already satisfied: requests<3,>=2.21.0 in /usr/local/lib/python3.7/dist-packages (from tensorboard>=2.4.1->-r yolov5/requirements.txt (line 15)) (2.23.0)
+Requirement already satisfied: absl-py>=0.4 in /usr/local/lib/python3.7/dist-packages (from tensorboard>=2.4.1->-r yolov5/requirements.txt (line 15)) (0.12.0)
+Requirement already satisfied: grpcio>=1.24.3 in /usr/local/lib/python3.7/dist-packages (from tensorboard>=2.4.1->-r yolov5/requirements.txt (line 15)) (1.39.0)
+Requirement already satisfied: werkzeug>=0.11.15 in /usr/local/lib/python3.7/dist-packages (from tensorboard>=2.4.1->-r yolov5/requirements.txt (line 15)) (1.0.1)
+Requirement already satisfied: setuptools>=41.0.0 in /usr/local/lib/python3.7/dist-packages (from tensorboard>=2.4.1->-r yolov5/requirements.txt (line 15)) (57.4.0)
+Requirement already satisfied: google-auth-oauthlib<0.5,>=0.4.1 in /usr/local/lib/python3.7/dist-packages (from tensorboard>=2.4.1->-r yolov5/requirements.txt (line 15)) (0.4.5)
+Requirement already satisfied: pytz>=2017.3 in /usr/local/lib/python3.7/dist-packages (from pandas->-r yolov5/requirements.txt (line 20)) (2018.9)
+Requirement already satisfied: six in /usr/local/lib/python3.7/dist-packages (from absl-py>=0.4->tensorboard>=2.4.1->-r yolov5/requirements.txt (line 15)) (1.15.0)
+Requirement already satisfied: rsa<5,>=3.1.4 in /usr/local/lib/python3.7/dist-packages (from google-auth<2,>=1.6.3->tensorboard>=2.4.1->-r yolov5/requirements.txt (line 15)) (4.7.2)
+Requirement already satisfied: cachetools<5.0,>=2.0.0 in /usr/local/lib/python3.7/dist-packages (from google-auth<2,>=1.6.3->tensorboard>=2.4.1->-r yolov5/requirements.txt (line 15)) (4.2.2)
+Requirement already satisfied: pyasn1-modules>=0.2.1 in /usr/local/lib/python3.7/dist-packages (from google-auth<2,>=1.6.3->tensorboard>=2.4.1->-r yolov5/requirements.txt (line 15)) (0.2.8)
+Requirement already satisfied: requests-oauthlib>=0.7.0 in /usr/local/lib/python3.7/dist-packages (from google-auth-oauthlib<0.5,>=0.4.1->tensorboard>=2.4.1->-r yolov5/requirements.txt (line 15)) (1.3.0)
+Requirement already satisfied: importlib-metadata in /usr/local/lib/python3.7/dist-packages (from markdown>=2.6.8->tensorboard>=2.4.1->-r yolov5/requirements.txt (line 15)) (4.6.4)
+Requirement already satisfied: pyasn1<0.5.0,>=0.4.6 in /usr/local/lib/python3.7/dist-packages (from pyasn1-modules>=0.2.1->google-auth<2,>=1.6.3->tensorboard>=2.4.1->-r yolov5/requirements.txt (line 15)) (0.4.8)
+Requirement already satisfied: idna<3,>=2.5 in /usr/local/lib/python3.7/dist-packages (from requests<3,>=2.21.0->tensorboard>=2.4.1->-r yolov5/requirements.txt (line 15)) (2.10)
+Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,<1.26,>=1.21.1 in /usr/local/lib/python3.7/dist-packages (from requests<3,>=2.21.0->tensorboard>=2.4.1->-r yolov5/requirements.txt (line 15)) (1.24.3)
+Requirement already satisfied: chardet<4,>=3.0.2 in /usr/local/lib/python3.7/dist-packages (from requests<3,>=2.21.0->tensorboard>=2.4.1->-r yolov5/requirements.txt (line 15)) (3.0.4)
+Requirement already satisfied: certifi>=2017.4.17 in /usr/local/lib/python3.7/dist-packages (from requests<3,>=2.21.0->tensorboard>=2.4.1->-r yolov5/requirements.txt (line 15)) (2021.5.30)
+Requirement already satisfied: oauthlib>=3.0.0 in /usr/local/lib/python3.7/dist-packages (from requests-oauthlib>=0.7.0->google-auth-oauthlib<0.5,>=0.4.1->tensorboard>=2.4.1->-r yolov5/requirements.txt (line 15)) (3.1.1)
+Requirement already satisfied: zipp>=0.5 in /usr/local/lib/python3.7/dist-packages (from importlib-metadata->markdown>=2.6.8->tensorboard>=2.4.1->-r yolov5/requirements.txt (line 15)) (3.5.0)
+Installing collected packages: Pillow, numpy, scipy, pandas, matplotlib, tqdm, thop, seaborn, PyYAML, opencv-python
+  Attempting uninstall: Pillow
+    Found existing installation: Pillow 7.1.2
+    Uninstalling Pillow-7.1.2:
+      Successfully uninstalled Pillow-7.1.2
+  Attempting uninstall: numpy
+    Found existing installation: numpy 1.19.5
+    Uninstalling numpy-1.19.5:
+      Successfully uninstalled numpy-1.19.5
+  Attempting uninstall: scipy
+    Found existing installation: scipy 1.4.1
+    Uninstalling scipy-1.4.1:
+      Successfully uninstalled scipy-1.4.1
+  Attempting uninstall: pandas
+    Found existing installation: pandas 1.1.5
+    Uninstalling pandas-1.1.5:
+      Successfully uninstalled pandas-1.1.5
+  Attempting uninstall: matplotlib
+    Found existing installation: matplotlib 3.2.2
+    Uninstalling matplotlib-3.2.2:
+      Successfully uninstalled matplotlib-3.2.2
+  Attempting uninstall: tqdm
+    Found existing installation: tqdm 4.62.0
+    Uninstalling tqdm-4.62.0:
+      Successfully uninstalled tqdm-4.62.0
+  Attempting uninstall: seaborn
+    Found existing installation: seaborn 0.11.1
+    Uninstalling seaborn-0.11.1:
+      Successfully uninstalled seaborn-0.11.1
+  Attempting uninstall: PyYAML
+    Found existing installation: PyYAML 3.13
+    Uninstalling PyYAML-3.13:
+      Successfully uninstalled PyYAML-3.13
+  Attempting uninstall: opencv-python
+    Found existing installation: opencv-python 4.1.2.30
+    Uninstalling opencv-python-4.1.2.30:
+      Successfully uninstalled opencv-python-4.1.2.30
+[31mERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+[31mtensorflow 2.6.0 requires numpy~=1.19.2, but you have numpy 1.21.2 which is incompatible.
+[31mgoogle-colab 1.0.0 requires pandas~=1.1.0; python_version >= "3.0", but you have pandas 1.3.2 which is incompatible.
+[31mdatascience 0.10.6 requires folium==0.2.1, but you have folium 0.8.3 which is incompatible.
+[31malbumentations 0.1.12 requires imgaug<0.2.7,>=0.2.5, but you have imgaug 0.2.9 which is incompatible.
+Successfully installed Pillow-8.3.2 PyYAML-5.4.1 matplotlib-3.4.3 numpy-1.21.2 opencv-python-4.5.3.56 pandas-1.3.2 scipy-1.7.1 seaborn-0.11.2 thop-0.0.31.post2005241907 tqdm-4.62.2
+[34m[1mtrain: [39m[22mweights=yolov5s.pt, cfg=, data=coco128.yaml, hyp=data/hyps/hyp.scratch.yaml, epochs=30, batch_size=8, imgsz=640, rect=False, resume=False, nosave=False, noval=False, noautoanchor=False, evolve=None, bucket=, cache=None, image_weights=False, device=, multi_scale=False, single_cls=False, adam=False, sync_bn=False, workers=8, project=runs/train, entity=None, name=exp, exist_ok=False, quad=False, linear_lr=False, label_smoothing=0.0, upload_dataset=False, bbox_interval=-1, save_period=-1, artifact_alias=latest, local_rank=-1, freeze=0, patience=30
+[34m[1mgithub: [39m[22mskipping check (not a git repository), for updates see https://github.com/ultralytics/yolov5
+YOLOv5 🚀 2021-8-29 torch 1.9.0+cu102 CUDA:0 (Tesla K80, 11441.1875MB)
+[34m[1mhyperparameters: [39m[22mlr0=0.01, lrf=0.2, momentum=0.937, weight_decay=0.0005, warmup_epochs=3.0, warmup_momentum=0.8, warmup_bias_lr=0.1, box=0.05, cls=0.5, cls_pw=1.0, obj=1.0, obj_pw=1.0, iou_t=0.2, anchor_t=4.0, fl_gamma=0.0, hsv_h=0.015, hsv_s=0.7, hsv_v=0.4, degrees=0.0, translate=0.1, scale=0.5, shear=0.0, perspective=0.0, flipud=0.0, fliplr=0.5, mosaic=1.0, mixup=0.0, copy_paste=0.0
+[34m[1mTensorBoard: [39m[22mStart with 'tensorboard --logdir runs/train', view at http://localhost:6006/
+[34m[1mwandb[39m[22m: Currently logged in as: [33mnahid-ebrahimian[39m (use `wandb login --relogin` to force relogin)
+[34m[1mwandb[39m[22m: Tracking run with wandb version 0.12.1
+[34m[1mwandb[39m[22m: Syncing run [33mstellar-donkey-10
+[34m[1mwandb[39m[22m: ⭐️ View project at [34m[4mhttps://wandb.ai/nahid-ebrahimian/YOLOv5
+[34m[1mwandb[39m[22m: 🚀 View run at [34m[4mhttps://wandb.ai/nahid-ebrahimian/YOLOv5/runs/39mz67qn
+[34m[1mwandb[39m[22m: Run data is saved locally in /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111905-39mz67qn
+[34m[1mwandb[39m[22m: Run `wandb offline` to turn off syncing.
+Overriding model.yaml nc=80 with nc=5
+                 from  n    params  module                                  arguments
+  0                -1  1      3520  models.common.Focus                     [3, 32, 3]
+  1                -1  1     18560  models.common.Conv                      [32, 64, 3, 2]
+  2                -1  1     18816  models.common.C3                        [64, 64, 1]
+  3                -1  1     73984  models.common.Conv                      [64, 128, 3, 2]
+  4                -1  3    156928  models.common.C3                        [128, 128, 3]
+  5                -1  1    295424  models.common.Conv                      [128, 256, 3, 2]
+  6                -1  3    625152  models.common.C3                        [256, 256, 3]
+  7                -1  1   1180672  models.common.Conv                      [256, 512, 3, 2]
+  8                -1  1    656896  models.common.SPP                       [512, 512, [5, 9, 13]]
+  9                -1  1   1182720  models.common.C3                        [512, 512, 1, False]
+ 10                -1  1    131584  models.common.Conv                      [512, 256, 1, 1]
+ 11                -1  1         0  torch.nn.modules.upsampling.Upsample    [None, 2, 'nearest']
+ 12           [-1, 6]  1         0  models.common.Concat                    [1]
+ 13                -1  1    361984  models.common.C3                        [512, 256, 1, False]
+ 14                -1  1     33024  models.common.Conv                      [256, 128, 1, 1]
+ 15                -1  1         0  torch.nn.modules.upsampling.Upsample    [None, 2, 'nearest']
+ 16           [-1, 4]  1         0  models.common.Concat                    [1]
+ 17                -1  1     90880  models.common.C3                        [256, 128, 1, False]
+ 18                -1  1    147712  models.common.Conv                      [128, 128, 3, 2]
+ 19          [-1, 14]  1         0  models.common.Concat                    [1]
+ 20                -1  1    296448  models.common.C3                        [256, 256, 1, False]
+ 21                -1  1    590336  models.common.Conv                      [256, 256, 3, 2]
+ 22          [-1, 10]  1         0  models.common.Concat                    [1]
+ 23                -1  1   1182720  models.common.C3                        [512, 512, 1, False]
+ 24      [17, 20, 23]  1     26970  models.yolo.Detect                      [5, [[10, 13, 16, 30, 33, 23], [30, 61, 62, 45, 59, 119], [116, 90, 156, 198, 373, 326]], [128, 256, 512]]
+Model Summary: 283 layers, 7074330 parameters, 7074330 gradients, 16.4 GFLOPs
+Transferred 356/362 items from yolov5s.pt
+Scaled weight_decay = 0.0005
+[34m[1moptimizer:[39m[22m SGD with parameter groups 59 weight, 62 weight (no decay), 62 bias
+[34m[1malbumentations: [39m[22mversion 1.0.3 required by YOLOv5, but version 0.1.12 is currently installed
+[34m[1mtrain: [39m[22mScanning '/content/drive/MyDrive/Yolov5ObjectDetection/Dataset/Train/labels.cache' images and labels... 1600 found, 10 missing, 0 empty, 0 corrupted: 100% 1610/1610 [00:00<?, ?it/s]
+[34m[1mval: [39m[22mScanning '/content/drive/MyDrive/Yolov5ObjectDetection/Dataset/Val/labels.cache' images and labels... 500 found, 0 missing, 0 empty, 0 corrupted: 100% 500/500 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+Plotting labels...
+[34m[1mautoanchor: [39m[22mAnalyzing anchors... anchors/target = 2.26, Best Possible Recall (BPR) = 1.0000
+Image sizes 640 train, 640 val
+Using 2 dataloader workers
+Logging results to runs/train/exp
+Starting training for 30 epochs...
+     Epoch   gpu_mem       box       obj       cls    labels  img_size
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      0/29     1.78G   0.08165   0.03214   0.03857        19       640:  10% 21/202 [00:46<06:44,  2.24s/it]
+Traceback (most recent call last):
+  File "yolov5/train.py", line 611, in <module>
+    main(opt)
+  File "yolov5/train.py", line 509, in main
+    train(opt.hyp, opt, device)
+  File "yolov5/train.py", line 312, in train
+    loss, loss_items = compute_loss(pred, targets.to(device))  # loss scaled by batch_size
+KeyboardInterrupt
+[34m[1mwandb[39m[22m: Waiting for W&B process to finish, PID 383
+[34m[1mwandb[39m[22m: Program failed with code 255.  Press ctrl-c to abort syncing.
+
+[34m[1mwandb[39m[22m:
+[34m[1mwandb[39m[22m: [32m[41mERROR[39m[49m Control-C detected -- Run data was not synced
+/usr/lib/python3.7/multiprocessing/semaphore_tracker.py:144: UserWarning: semaphore_tracker: There appear to be 6 leaked semaphores to clean up at shutdown
+  len(cache))
+Exception in thread Thread-14:
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/threading.py", line 926, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.7/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/wandb/sdk/wandb_run.py", line 203, in check_status
+    status_response = self._interface.communicate_stop_status()
+  File "/usr/local/lib/python3.7/dist-packages/wandb/sdk/interface/interface.py", line 737, in communicate_stop_status
+    resp = self._communicate(req, timeout=timeout, local=True)
+  File "/usr/local/lib/python3.7/dist-packages/wandb/sdk/interface/interface.py", line 539, in _communicate
+    return self._communicate_async(rec, local=local).get(timeout=timeout)
+  File "/usr/local/lib/python3.7/dist-packages/wandb/sdk/interface/interface.py", line 544, in _communicate_async
+    raise Exception("The wandb backend process has shutdown")
+Exception: The wandb backend process has shutdown
+Exception in thread Thread-15:
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/threading.py", line 926, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.7/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/wandb/sdk/wandb_run.py", line 185, in check_network_status
+    status_response = self._interface.communicate_network_status()
+  File "/usr/local/lib/python3.7/dist-packages/wandb/sdk/interface/interface.py", line 749, in communicate_network_status
+    resp = self._communicate(req, timeout=timeout, local=True)
+  File "/usr/local/lib/python3.7/dist-packages/wandb/sdk/interface/interface.py", line 539, in _communicate
+    return self._communicate_async(rec, local=local).get(timeout=timeout)
+  File "/usr/local/lib/python3.7/dist-packages/wandb/sdk/interface/interface.py", line 544, in _communicate_async
+    raise Exception("The wandb backend process has shutdown")
+Exception: The wandb backend process has shutdown

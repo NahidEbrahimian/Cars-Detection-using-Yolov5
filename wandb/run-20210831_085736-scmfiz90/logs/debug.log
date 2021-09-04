@@ -1,0 +1,44 @@
+2021-08-31 08:57:36,337 INFO    MainThread:77 [wandb_setup.py:_flush():69] setting env: {}
+2021-08-31 08:57:36,338 INFO    MainThread:77 [wandb_setup.py:_flush():69] setting login settings: {}
+2021-08-31 08:57:36,338 INFO    MainThread:77 [wandb_setup.py:_flush():69] setting login settings: {'api_key': '2ad32f3610515f9a3f89d3c177d5ce2690622d49'}
+2021-08-31 08:57:36,339 INFO    MainThread:77 [wandb_init.py:_log_setup():342] Logging user logs to /content/drive/My Drive/YoloObjectDetection/wandb/run-20210831_085736-scmfiz90/logs/debug.log
+2021-08-31 08:57:36,339 INFO    MainThread:77 [wandb_init.py:_log_setup():343] Logging internal logs to /content/drive/My Drive/YoloObjectDetection/wandb/run-20210831_085736-scmfiz90/logs/debug-internal.log
+2021-08-31 08:57:36,340 INFO    MainThread:77 [wandb_init.py:_jupyter_setup():294] configuring jupyter hooks <wandb.sdk.wandb_init._WandbInit object at 0x7f98ddfd2610>
+2021-08-31 08:57:36,341 INFO    MainThread:77 [wandb_init.py:init():375] calling init triggers
+2021-08-31 08:57:36,341 INFO    MainThread:77 [wandb_init.py:init():382] wandb.init called with sweep_config: {}
+config: {}
+2021-08-31 08:57:36,341 INFO    MainThread:77 [wandb_init.py:init():424] starting backend
+2021-08-31 08:57:36,341 INFO    MainThread:77 [backend.py:_multiprocessing_setup():72] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2021-08-31 08:57:36,362 INFO    MainThread:77 [backend.py:ensure_launched():135] starting backend process...
+2021-08-31 08:57:36,372 INFO    MainThread:77 [backend.py:ensure_launched():140] started backend process with pid: 335
+2021-08-31 08:57:36,381 INFO    MainThread:77 [wandb_init.py:init():429] backend started and connected
+2021-08-31 08:57:36,457 INFO    MainThread:77 [wandb_run.py:_label_probe_notebook():815] probe notebook
+2021-08-31 08:57:37,876 INFO    MainThread:77 [wandb_init.py:init():477] updated telemetry
+2021-08-31 08:57:37,877 INFO    MainThread:77 [wandb_init.py:init():500] communicating current version
+2021-08-31 08:57:37,960 INFO    MainThread:77 [wandb_init.py:init():505] got version response 
+2021-08-31 08:57:37,960 INFO    MainThread:77 [wandb_init.py:init():513] communicating run to backend with 30 second timeout
+2021-08-31 08:57:38,040 INFO    MainThread:77 [wandb_init.py:init():540] starting run threads in backend
+2021-08-31 08:57:39,781 INFO    MainThread:77 [wandb_run.py:_console_start():1601] atexit reg
+2021-08-31 08:57:39,786 INFO    MainThread:77 [wandb_run.py:_redirect():1475] redirect: SettingsConsole.WRAP
+2021-08-31 08:57:39,786 INFO    MainThread:77 [wandb_run.py:_redirect():1512] Wrapping output streams.
+2021-08-31 08:57:39,789 INFO    MainThread:77 [wandb_run.py:_redirect():1536] Redirects installed.
+2021-08-31 08:57:39,790 INFO    MainThread:77 [wandb_init.py:init():565] run started, returning control to user process
+2021-08-31 08:57:39,798 INFO    MainThread:77 [wandb_init.py:_pause_backend():256] pausing backend
+2021-08-31 08:57:39,802 INFO    MainThread:77 [jupyter.py:save_ipynb():298] not saving jupyter notebook
+2021-08-31 08:58:33,585 INFO    MainThread:77 [wandb_init.py:_resume_backend():265] resuming backend
+2021-08-31 08:59:44,280 INFO    MainThread:77 [wandb_init.py:_pause_backend():256] pausing backend
+2021-08-31 08:59:44,282 INFO    MainThread:77 [jupyter.py:save_ipynb():298] not saving jupyter notebook
+2021-08-31 09:34:53,163 INFO    MainThread:77 [wandb_init.py:_resume_backend():265] resuming backend
+2021-08-31 09:34:53,170 INFO    MainThread:77 [wandb_init.py:_pause_backend():256] pausing backend
+2021-08-31 09:34:53,171 INFO    MainThread:77 [jupyter.py:save_ipynb():298] not saving jupyter notebook
+2021-08-31 09:35:22,114 INFO    MainThread:77 [wandb_init.py:_resume_backend():265] resuming backend
+2021-08-31 09:35:22,195 INFO    MainThread:77 [wandb_setup.py:_flush():69] setting env: {}
+2021-08-31 09:35:22,196 INFO    MainThread:77 [wandb_setup.py:_flush():69] setting login settings: {}
+2021-08-31 09:35:22,197 INFO    MainThread:77 [wandb_setup.py:_flush():69] setting login settings: {'api_key': '2ad32f3610515f9a3f89d3c177d5ce2690622d49'}
+2021-08-31 09:35:22,198 INFO    MainThread:77 [wandb_init.py:_log_setup():342] Logging user logs to /content/drive/My Drive/YoloObjectDetection/wandb/run-20210831_093522-1xxpkdu3/logs/debug.log
+2021-08-31 09:35:22,198 INFO    MainThread:77 [wandb_init.py:_log_setup():343] Logging internal logs to /content/drive/My Drive/YoloObjectDetection/wandb/run-20210831_093522-1xxpkdu3/logs/debug-internal.log
+2021-08-31 09:35:22,200 INFO    MainThread:77 [wandb_init.py:init():375] calling init triggers
+2021-08-31 09:35:22,200 INFO    MainThread:77 [wandb_init.py:init():382] wandb.init called with sweep_config: {}
+config: {}
+2021-08-31 09:35:22,200 INFO    MainThread:77 [wandb_init.py:init():397] re-initializing run, found existing run on stack: scmfiz90
+2021-08-31 09:35:22,203 INFO    MainThread:77 [wandb_run.py:finish():1271] finishing run nahid-ebrahimian/Yolo5s-ObjectDetection/scmfiz90

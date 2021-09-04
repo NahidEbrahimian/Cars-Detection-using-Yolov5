@@ -1,0 +1,136 @@
+2021-09-03 11:17:22,162 INFO    MainThread:295 [internal.py:wandb_internal():89] W&B internal server running at pid: 295, started at: 2021-09-03 11:17:22.158768
+2021-09-03 11:17:24,280 DEBUG   SenderThread:295 [sender.py:send():182] send: header
+2021-09-03 11:17:24,280 INFO    WriterThread:295 [datastore.py:open_for_write():77] open: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/run-2q5vmypr.wandb
+2021-09-03 11:17:24,281 DEBUG   HandlerThread:295 [handler.py:handle_request():126] handle_request: check_version
+2021-09-03 11:17:24,282 DEBUG   SenderThread:295 [sender.py:send_request():196] send_request: check_version
+2021-09-03 11:17:24,354 DEBUG   SenderThread:295 [sender.py:send():182] send: run
+2021-09-03 11:17:24,365 DEBUG   SenderThread:295 [git.py:repo():33] git repository is invalid
+2021-09-03 11:17:24,425 DEBUG   HandlerThread:295 [handler.py:handle_request():126] handle_request: run_start
+2021-09-03 11:17:24,444 INFO    SenderThread:295 [dir_watcher.py:__init__():169] watching files in: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files
+2021-09-03 11:17:24,445 INFO    SenderThread:295 [sender.py:_start_run_threads():743] run started: 2q5vmypr with start time 1630667841
+2021-09-03 11:17:24,445 DEBUG   SenderThread:295 [sender.py:send():182] send: summary
+2021-09-03 11:17:24,451 INFO    SenderThread:295 [sender.py:_save_file():873] saving file wandb-summary.json with policy end
+2021-09-03 11:17:25,449 INFO    Thread-8  :295 [dir_watcher.py:_on_file_created():217] file/dir created: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/wandb-summary.json
+2021-09-03 11:17:25,846 DEBUG   HandlerThread:295 [meta.py:__init__():40] meta init
+2021-09-03 11:17:25,847 DEBUG   HandlerThread:295 [meta.py:__init__():54] meta init done
+2021-09-03 11:17:25,847 DEBUG   HandlerThread:295 [meta.py:probe():211] probe
+2021-09-03 11:17:25,857 DEBUG   HandlerThread:295 [git.py:repo():33] git repository is invalid
+2021-09-03 11:17:25,857 DEBUG   HandlerThread:295 [meta.py:_save_pip():58] save pip
+2021-09-03 11:17:25,862 DEBUG   HandlerThread:295 [meta.py:_save_pip():72] save pip done
+2021-09-03 11:17:25,863 DEBUG   HandlerThread:295 [meta.py:probe():249] probe done
+2021-09-03 11:17:25,870 DEBUG   SenderThread:295 [sender.py:send():182] send: files
+2021-09-03 11:17:25,870 INFO    SenderThread:295 [sender.py:_save_file():873] saving file wandb-metadata.json with policy now
+2021-09-03 11:17:25,889 DEBUG   HandlerThread:295 [handler.py:handle_request():126] handle_request: stop_status
+2021-09-03 11:17:25,889 DEBUG   SenderThread:295 [sender.py:send_request():196] send_request: stop_status
+2021-09-03 11:17:25,911 DEBUG   HandlerThread:295 [handler.py:handle_request():126] handle_request: pause
+2021-09-03 11:17:25,912 INFO    HandlerThread:295 [handler.py:handle_request_pause():567] stopping system metrics thread
+2021-09-03 11:17:25,965 DEBUG   SenderThread:295 [sender.py:send():182] send: stats
+2021-09-03 11:17:26,153 INFO    Thread-11 :295 [upload_job.py:push():137] Uploaded file /tmp/tmpj_527a95wandb/255p633h-wandb-metadata.json
+2021-09-03 11:17:26,450 INFO    Thread-8  :295 [dir_watcher.py:_on_file_created():217] file/dir created: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:17:26,451 INFO    Thread-8  :295 [dir_watcher.py:_on_file_created():217] file/dir created: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/wandb-metadata.json
+2021-09-03 11:17:26,452 INFO    Thread-8  :295 [dir_watcher.py:_on_file_created():217] file/dir created: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/requirements.txt
+2021-09-03 11:17:30,535 DEBUG   HandlerThread:295 [handler.py:handle_request():126] handle_request: resume
+2021-09-03 11:17:30,535 INFO    HandlerThread:295 [handler.py:handle_request_resume():558] starting system metrics thread
+2021-09-03 11:17:34,472 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:17:36,481 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:17:40,497 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:17:40,931 DEBUG   HandlerThread:295 [handler.py:handle_request():126] handle_request: stop_status
+2021-09-03 11:17:40,931 DEBUG   SenderThread:295 [sender.py:send_request():196] send_request: stop_status
+2021-09-03 11:17:42,507 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:17:44,512 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:17:46,517 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:17:48,522 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:17:50,527 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:17:52,535 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:17:54,540 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:17:55,972 DEBUG   HandlerThread:295 [handler.py:handle_request():126] handle_request: stop_status
+2021-09-03 11:17:55,973 DEBUG   SenderThread:295 [sender.py:send_request():196] send_request: stop_status
+2021-09-03 11:17:58,550 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:17:58,709 DEBUG   SenderThread:295 [sender.py:send():182] send: stats
+2021-09-03 11:18:00,556 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:18:02,561 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:18:06,571 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:18:11,008 DEBUG   HandlerThread:295 [handler.py:handle_request():126] handle_request: stop_status
+2021-09-03 11:18:11,008 DEBUG   SenderThread:295 [sender.py:send_request():196] send_request: stop_status
+2021-09-03 11:18:14,592 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:18:16,601 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:18:18,607 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:18:19,888 DEBUG   HandlerThread:295 [handler.py:handle_request():126] handle_request: pause
+2021-09-03 11:18:19,888 INFO    HandlerThread:295 [handler.py:handle_request_pause():567] stopping system metrics thread
+2021-09-03 11:18:19,971 DEBUG   HandlerThread:295 [handler.py:handle_request():126] handle_request: resume
+2021-09-03 11:18:19,972 INFO    HandlerThread:295 [handler.py:handle_request_resume():558] starting system metrics thread
+2021-09-03 11:18:19,972 DEBUG   SenderThread:295 [sender.py:send():182] send: stats
+2021-09-03 11:18:20,612 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:18:26,054 DEBUG   HandlerThread:295 [handler.py:handle_request():126] handle_request: stop_status
+2021-09-03 11:18:26,055 DEBUG   SenderThread:295 [sender.py:send_request():196] send_request: stop_status
+2021-09-03 11:18:32,645 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:18:41,086 DEBUG   HandlerThread:295 [handler.py:handle_request():126] handle_request: stop_status
+2021-09-03 11:18:41,087 DEBUG   SenderThread:295 [sender.py:send_request():196] send_request: stop_status
+2021-09-03 11:18:48,075 DEBUG   SenderThread:295 [sender.py:send():182] send: stats
+2021-09-03 11:18:56,117 DEBUG   HandlerThread:295 [handler.py:handle_request():126] handle_request: stop_status
+2021-09-03 11:18:56,118 DEBUG   SenderThread:295 [sender.py:send_request():196] send_request: stop_status
+2021-09-03 11:19:04,739 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:19:06,744 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:19:10,756 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:19:11,151 DEBUG   HandlerThread:295 [handler.py:handle_request():126] handle_request: stop_status
+2021-09-03 11:19:11,152 DEBUG   SenderThread:295 [sender.py:send_request():196] send_request: stop_status
+2021-09-03 11:19:18,187 DEBUG   SenderThread:295 [sender.py:send():182] send: stats
+2021-09-03 11:19:24,801 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:19:26,185 DEBUG   HandlerThread:295 [handler.py:handle_request():126] handle_request: stop_status
+2021-09-03 11:19:26,185 DEBUG   SenderThread:295 [sender.py:send_request():196] send_request: stop_status
+2021-09-03 11:19:26,807 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:19:41,220 DEBUG   HandlerThread:295 [handler.py:handle_request():126] handle_request: stop_status
+2021-09-03 11:19:41,221 DEBUG   SenderThread:295 [sender.py:send_request():196] send_request: stop_status
+2021-09-03 11:19:48,288 DEBUG   SenderThread:295 [sender.py:send():182] send: stats
+2021-09-03 11:19:50,878 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:19:56,253 DEBUG   HandlerThread:295 [handler.py:handle_request():126] handle_request: stop_status
+2021-09-03 11:19:56,254 DEBUG   SenderThread:295 [sender.py:send_request():196] send_request: stop_status
+2021-09-03 11:19:58,903 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:20:04,936 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:20:08,950 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:20:10,956 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:20:11,289 DEBUG   HandlerThread:295 [handler.py:handle_request():126] handle_request: stop_status
+2021-09-03 11:20:11,290 DEBUG   SenderThread:295 [sender.py:send_request():196] send_request: stop_status
+2021-09-03 11:20:14,967 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:20:16,973 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:20:18,407 DEBUG   SenderThread:295 [sender.py:send():182] send: stats
+2021-09-03 11:20:20,985 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:20:24,997 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:20:26,331 DEBUG   HandlerThread:295 [handler.py:handle_request():126] handle_request: stop_status
+2021-09-03 11:20:26,331 DEBUG   SenderThread:295 [sender.py:send_request():196] send_request: stop_status
+2021-09-03 11:20:27,003 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:20:31,016 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:20:33,021 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:20:35,027 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:20:37,033 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:20:39,045 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:20:41,051 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:20:41,367 DEBUG   HandlerThread:295 [handler.py:handle_request():126] handle_request: stop_status
+2021-09-03 11:20:41,377 DEBUG   SenderThread:295 [sender.py:send_request():196] send_request: stop_status
+2021-09-03 11:20:43,056 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:20:45,062 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:20:47,070 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:20:48,535 DEBUG   SenderThread:295 [sender.py:send():182] send: stats
+2021-09-03 11:20:49,614 WARNING MainThread:295 [internal.py:wandb_internal():145] Internal process interrupt: 1
+2021-09-03 11:20:51,082 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:20:53,088 INFO    Thread-8  :295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:20:54,230 WARNING MainThread:295 [internal.py:wandb_internal():145] Internal process interrupt: 2
+2021-09-03 11:20:54,246 ERROR   MainThread:295 [internal.py:wandb_internal():148] Internal process interrupted.
+2021-09-03 11:20:54,338 INFO    SenderThread:295 [sender.py:finish():979] shutting down sender
+2021-09-03 11:20:54,338 INFO    SenderThread:295 [dir_watcher.py:finish():283] shutting down directory watcher
+2021-09-03 11:20:54,338 INFO    WriterThread:295 [datastore.py:close():281] close: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/run-2q5vmypr.wandb
+2021-09-03 11:20:54,339 INFO    HandlerThread:295 [handler.py:finish():683] shutting down handler
+2021-09-03 11:20:55,092 INFO    SenderThread:295 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:20:55,094 INFO    SenderThread:295 [dir_watcher.py:finish():313] scan: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files
+2021-09-03 11:20:55,095 INFO    SenderThread:295 [dir_watcher.py:finish():327] scan save: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/config.yaml config.yaml
+2021-09-03 11:20:55,097 INFO    SenderThread:295 [dir_watcher.py:finish():327] scan save: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/wandb-summary.json wandb-summary.json
+2021-09-03 11:20:55,101 INFO    SenderThread:295 [dir_watcher.py:finish():327] scan save: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/requirements.txt requirements.txt
+2021-09-03 11:20:55,106 INFO    SenderThread:295 [dir_watcher.py:finish():327] scan save: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/wandb-metadata.json wandb-metadata.json
+2021-09-03 11:20:55,107 INFO    SenderThread:295 [dir_watcher.py:finish():327] scan save: /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log output.log
+2021-09-03 11:20:55,109 INFO    SenderThread:295 [file_pusher.py:finish():177] shutting down file pusher
+2021-09-03 11:20:55,109 INFO    SenderThread:295 [file_pusher.py:join():182] waiting for file pusher
+2021-09-03 11:20:55,384 INFO    Thread-17 :295 [upload_job.py:push():137] Uploaded file /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/output.log
+2021-09-03 11:20:55,384 INFO    Thread-15 :295 [upload_job.py:push():137] Uploaded file /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/wandb-summary.json
+2021-09-03 11:20:55,389 INFO    Thread-16 :295 [upload_job.py:push():137] Uploaded file /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/requirements.txt
+2021-09-03 11:20:55,394 INFO    Thread-14 :295 [upload_job.py:push():137] Uploaded file /content/drive/My Drive/YoloObjectDetection/wandb/run-20210903_111721-2q5vmypr/files/config.yaml
+2021-09-03 11:20:55,638 INFO    MainThread:295 [internal.py:handle_exit():76] Internal process exited

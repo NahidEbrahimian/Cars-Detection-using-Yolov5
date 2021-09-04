@@ -1,0 +1,21 @@
+{
+    "os": "Linux-5.4.104+-x86_64-with-Ubuntu-18.04-bionic",
+    "python": "3.7.11",
+    "heartbeatAt": "2021-09-03T11:17:25.847553",
+    "startedAt": "2021-09-03T11:17:21.198605",
+    "docker": null,
+    "gpu": "Tesla K80",
+    "gpu_count": 1,
+    "cpu_count": 2,
+    "cuda": "11.0.228",
+    "args": [
+        "-f",
+        "/root/.local/share/jupyter/runtime/kernel-e3d73735-2fe6-4375-8c39-8de7203e791b.json"
+    ],
+    "state": "running",
+    "program": "Yolo for Object Detection.ipynb",
+    "colab": "https://colab.research.google.com/notebook#fileId=1NG4Fn3elCY6O3HpRRPKAxOvpeCpiJnNR",
+    "host": "542476b7698a",
+    "username": "root",
+    "executable": "/usr/bin/python3"
+}

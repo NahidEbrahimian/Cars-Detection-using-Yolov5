@@ -1,0 +1,2116 @@
+[34m[1mtrain: [39m[22mweights=yolov5s.pt, cfg=, data=coco128.yaml, hyp=data/hyps/hyp.scratch.yaml, epochs=30, batch_size=8, imgsz=640, rect=False, resume=False, nosave=False, noval=False, noautoanchor=False, evolve=None, bucket=, cache=None, image_weights=False, device=, multi_scale=False, single_cls=False, adam=False, sync_bn=False, workers=8, project=runs/train, entity=None, name=exp, exist_ok=False, quad=False, linear_lr=False, label_smoothing=0.0, upload_dataset=False, bbox_interval=-1, save_period=-1, artifact_alias=latest, local_rank=-1, freeze=0, patience=30
+[34m[1mgithub: [39m[22mskipping check (not a git repository), for updates see https://github.com/ultralytics/yolov5
+YOLOv5 🚀 2021-8-29 torch 1.9.0+cu102 CUDA:0 (Tesla K80, 11441.1875MB)
+[34m[1mhyperparameters: [39m[22mlr0=0.01, lrf=0.2, momentum=0.937, weight_decay=0.0005, warmup_epochs=3.0, warmup_momentum=0.8, warmup_bias_lr=0.1, box=0.05, cls=0.5, cls_pw=1.0, obj=1.0, obj_pw=1.0, iou_t=0.2, anchor_t=4.0, fl_gamma=0.0, hsv_h=0.015, hsv_s=0.7, hsv_v=0.4, degrees=0.0, translate=0.1, scale=0.5, shear=0.0, perspective=0.0, flipud=0.0, fliplr=0.5, mosaic=1.0, mixup=0.0, copy_paste=0.0
+[34m[1mTensorBoard: [39m[22mStart with 'tensorboard --logdir runs/train', view at http://localhost:6006/
+[34m[1mwandb[39m[22m: Currently logged in as: [33mnahid-ebrahimian[39m (use `wandb login --relogin` to force relogin)
+[34m[1mwandb[39m[22m: Tracking run with wandb version 0.12.1
+[34m[1mwandb[39m[22m: Syncing run [33mfanciful-frog-4
+[34m[1mwandb[39m[22m: ⭐️ View project at [34m[4mhttps://wandb.ai/nahid-ebrahimian/YOLOv5
+[34m[1mwandb[39m[22m: 🚀 View run at [34m[4mhttps://wandb.ai/nahid-ebrahimian/YOLOv5/runs/3n888zrt
+[34m[1mwandb[39m[22m: Run data is saved locally in /content/drive/My Drive/YoloObjectDetection/wandb/run-20210831_093547-3n888zrt
+[34m[1mwandb[39m[22m: Run `wandb offline` to turn off syncing.
+Overriding model.yaml nc=80 with nc=5
+                 from  n    params  module                                  arguments
+  0                -1  1      3520  models.common.Focus                     [3, 32, 3]
+  1                -1  1     18560  models.common.Conv                      [32, 64, 3, 2]
+  2                -1  1     18816  models.common.C3                        [64, 64, 1]
+  3                -1  1     73984  models.common.Conv                      [64, 128, 3, 2]
+  4                -1  3    156928  models.common.C3                        [128, 128, 3]
+  5                -1  1    295424  models.common.Conv                      [128, 256, 3, 2]
+  6                -1  3    625152  models.common.C3                        [256, 256, 3]
+  7                -1  1   1180672  models.common.Conv                      [256, 512, 3, 2]
+  8                -1  1    656896  models.common.SPP                       [512, 512, [5, 9, 13]]
+  9                -1  1   1182720  models.common.C3                        [512, 512, 1, False]
+ 10                -1  1    131584  models.common.Conv                      [512, 256, 1, 1]
+ 11                -1  1         0  torch.nn.modules.upsampling.Upsample    [None, 2, 'nearest']
+ 12           [-1, 6]  1         0  models.common.Concat                    [1]
+ 13                -1  1    361984  models.common.C3                        [512, 256, 1, False]
+ 14                -1  1     33024  models.common.Conv                      [256, 128, 1, 1]
+ 15                -1  1         0  torch.nn.modules.upsampling.Upsample    [None, 2, 'nearest']
+ 16           [-1, 4]  1         0  models.common.Concat                    [1]
+ 17                -1  1     90880  models.common.C3                        [256, 128, 1, False]
+ 18                -1  1    147712  models.common.Conv                      [128, 128, 3, 2]
+ 19          [-1, 14]  1         0  models.common.Concat                    [1]
+ 20                -1  1    296448  models.common.C3                        [256, 256, 1, False]
+ 21                -1  1    590336  models.common.Conv                      [256, 256, 3, 2]
+ 22          [-1, 10]  1         0  models.common.Concat                    [1]
+ 23                -1  1   1182720  models.common.C3                        [512, 512, 1, False]
+ 24      [17, 20, 23]  1     26970  models.yolo.Detect                      [5, [[10, 13, 16, 30, 33, 23], [30, 61, 62, 45, 59, 119], [116, 90, 156, 198, 373, 326]], [128, 256, 512]]
+Model Summary: 283 layers, 7074330 parameters, 7074330 gradients
+Transferred 356/362 items from yolov5s.pt
+Scaled weight_decay = 0.0005
+[34m[1moptimizer:[39m[22m SGD with parameter groups 59 weight, 62 weight (no decay), 62 bias
+[34m[1malbumentations: [39m[22mversion 1.0.3 required by YOLOv5, but version 0.1.12 is currently installed
+[34m[1mtrain: [39m[22mScanning '/content/drive/MyDrive/YoloObjectDetection/Dataset/Train/labels.cache' images and labels... 1600 found, 10 missing, 0 empty, 0 corrupted: 100% 1610/1610 [00:00<?, ?it/s]
+[34m[1mval: [39m[22mScanning '/content/drive/MyDrive/YoloObjectDetection/Dataset/Val/labels.cache' images and labels... 500 found, 0 missing, 0 empty, 0 corrupted: 100% 500/500 [00:00<?, ?it/s][W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+Plotting labels...
+[34m[1mval: [39m[22mScanning '/content/drive/MyDrive/YoloObjectDetection/Dataset/Val/labels.cache' images and labels... 500 found, 0 missing, 0 empty, 0 corrupted: 100% 500/500 [00:00<?, ?it/s]
+[34m[1mautoanchor: [39m[22mAnalyzing anchors... anchors/target = 2.26, Best Possible Recall (BPR) = 1.0000
+Image sizes 640 train, 640 val
+Using 2 dataloader workers
+Logging results to runs/train/exp17
+Starting training for 30 epochs...
+     Epoch   gpu_mem       box       obj       cls    labels  img_size
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      0/29     1.78G   0.05261    0.0262   0.03603         4       640: 100% 202/202 [03:49<00:00,  1.13s/it]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95: 100% 32/32 [00:43<00:00,  1.37s/it]
+                 all        500        509      0.174      0.822      0.213      0.132
+     Epoch   gpu_mem       box       obj       cls    labels  img_size
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      1/29     3.21G   0.03287   0.01631   0.03505         5       640: 100% 202/202 [02:03<00:00,  1.64it/s]
+
+
+
+
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95: 100% 32/32 [00:10<00:00,  3.02it/s]
+                 all        500        509      0.196      0.943      0.238      0.167
+     Epoch   gpu_mem       box       obj       cls    labels  img_size
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      2/29     3.21G   0.02815   0.01395   0.03432         7       640: 100% 202/202 [02:01<00:00,  1.66it/s]
+
+
+
+
+
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95: 100% 32/32 [00:11<00:00,  2.72it/s]
+                 all        500        509      0.203      0.877      0.238      0.172
+     Epoch   gpu_mem       box       obj       cls    labels  img_size
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      3/29     3.21G   0.02915   0.01276    0.0353         3       640: 100% 202/202 [02:01<00:00,  1.66it/s]
+
+
+
+
+
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95: 100% 32/32 [00:10<00:00,  3.04it/s]
+                 all        500        509      0.197      0.847      0.237      0.162
+     Epoch   gpu_mem       box       obj       cls    labels  img_size
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      4/29     3.21G    0.0268    0.0122   0.03366         4       640: 100% 202/202 [02:00<00:00,  1.67it/s]
+
+
+
+
+
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95: 100% 32/32 [00:10<00:00,  3.04it/s]
+                 all        500        509       0.19      0.949      0.229      0.137
+     Epoch   gpu_mem       box       obj       cls    labels  img_size
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      5/29     3.21G   0.02441   0.01199   0.03408         5       640: 100% 202/202 [02:00<00:00,  1.68it/s]
+
+
+
+
+
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95: 100% 32/32 [00:11<00:00,  2.75it/s]
+                 all        500        509      0.196      0.969      0.235      0.163
+     Epoch   gpu_mem       box       obj       cls    labels  img_size
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      6/29     3.21G   0.02306   0.01131   0.03354         7       640: 100% 202/202 [02:00<00:00,  1.67it/s]
+
+
+
+
+
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95: 100% 32/32 [00:10<00:00,  3.06it/s]
+                 all        500        509        0.2      0.943      0.235      0.188
+     Epoch   gpu_mem       box       obj       cls    labels  img_size
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      7/29     3.21G   0.02121   0.01105   0.03456         8       640: 100% 202/202 [02:01<00:00,  1.66it/s]
+
+
+
+
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95: 100% 32/32 [00:10<00:00,  3.03it/s]
+                 all        500        509      0.198      0.943      0.257      0.198
+     Epoch   gpu_mem       box       obj       cls    labels  img_size
+      8/29     3.21G    0.0185   0.01265   0.03295        19       640:   3% 6/202 [00:03<01:58,  1.66it/s]
+      8/29     3.21G   0.02063   0.01183   0.03298        18       640:   4% 9/202 [00:05<01:58,  1.63it/s]
+      8/29     3.21G   0.02076   0.01158    0.0332        16       640:   6% 12/202 [00:07<01:54,  1.65it/s]
+      8/29     3.21G   0.01906   0.01122   0.03283        21       640:   8% 16/202 [00:09<01:53,  1.64it/s]
+      8/29     3.21G   0.01943   0.01137   0.03363        19       640:   9% 19/202 [00:11<01:48,  1.68it/s]
+      8/29     3.21G   0.01879     0.011   0.03336        20       640:  11% 22/202 [00:13<01:47,  1.67it/s]
+      8/29     3.21G   0.02081    0.0111    0.0344        22       640:  13% 26/202 [00:15<01:47,  1.64it/s]
+      8/29     3.21G   0.02129   0.01157   0.03508        24       640:  14% 29/202 [00:17<01:43,  1.68it/s]
+      8/29     3.21G   0.02202   0.01169   0.03527        24       640:  16% 32/202 [00:19<01:44,  1.62it/s]
+      8/29     3.21G   0.02128   0.01139   0.03492        19       640:  18% 36/202 [00:21<01:38,  1.68it/s]
+      8/29     3.21G   0.02108   0.01172   0.03514        30       640:  19% 39/202 [00:23<01:37,  1.67it/s]
+      8/29     3.21G   0.02092   0.01172   0.03524        23       640:  21% 42/202 [00:25<01:37,  1.64it/s]
+      8/29     3.21G   0.02035   0.01145   0.03485        21       640:  23% 46/202 [00:27<01:33,  1.66it/s]
+      8/29     3.21G   0.02005    0.0114   0.03469        26       640:  24% 49/202 [00:29<01:33,  1.63it/s]
+      8/29     3.21G   0.01984   0.01124   0.03453        19       640:  26% 52/202 [00:31<01:29,  1.67it/s]
+      8/29     3.21G   0.02021   0.01131   0.03507        26       640:  28% 56/202 [00:33<01:31,  1.60it/s]
+      8/29     3.21G   0.01986   0.01121   0.03486        17       640:  29% 59/202 [00:35<01:26,  1.65it/s]
+      8/29     3.21G   0.01955   0.01117   0.03471        23       640:  31% 62/202 [00:37<01:24,  1.65it/s]
+      8/29     3.21G   0.01945   0.01114   0.03467        21       640:  33% 66/202 [00:39<01:22,  1.66it/s]
+      8/29     3.21G   0.01913   0.01107   0.03449        23       640:  34% 69/202 [00:41<01:20,  1.66it/s]
+      8/29     3.21G   0.01888   0.01105    0.0344        21       640:  36% 72/202 [00:43<01:19,  1.64it/s]
+      8/29     3.21G   0.01948    0.0111   0.03441        30       640:  38% 76/202 [00:45<01:16,  1.65it/s]
+      8/29     3.21G   0.01934   0.01106    0.0343        23       640:  39% 79/202 [00:47<01:13,  1.68it/s]
+      8/29     3.21G   0.01979   0.01105   0.03453        23       640:  41% 82/202 [00:49<01:12,  1.66it/s]
+      8/29     3.21G   0.01967   0.01109   0.03445        27       640:  42% 85/202 [00:51<01:09,  1.68it/s]
+      8/29     3.21G    0.0194   0.01103   0.03435        19       640:  44% 89/202 [00:53<01:08,  1.65it/s]
+      8/29     3.21G   0.01928   0.01095   0.03426        18       640:  46% 92/202 [00:55<01:05,  1.67it/s]
+      8/29     3.21G   0.01907   0.01084   0.03402        21       640:  47% 95/202 [00:57<01:03,  1.69it/s]
+      8/29     3.21G   0.01912   0.01084   0.03401        31       640:  49% 99/202 [00:59<01:01,  1.68it/s]
+      8/29     3.21G   0.01908   0.01078   0.03409        21       640:  50% 102/202 [01:01<00:59,  1.68it/s]
+      8/29     3.21G   0.01889   0.01073   0.03399        19       640:  52% 106/202 [01:03<00:57,  1.66it/s]
+      8/29     3.21G   0.01878    0.0108   0.03395        26       640:  54% 109/202 [01:05<00:55,  1.68it/s]
+      8/29     3.21G   0.01866   0.01076   0.03387        28       640:  55% 112/202 [01:07<00:54,  1.66it/s]
+      8/29     3.21G   0.01848    0.0107   0.03377        21       640:  57% 116/202 [01:09<00:51,  1.68it/s]
+      8/29     3.21G    0.0186   0.01076   0.03378        27       640:  59% 119/202 [01:11<00:49,  1.68it/s]
+      8/29     3.21G   0.01845   0.01073   0.03372        25       640:  60% 122/202 [01:13<00:48,  1.66it/s]
+      8/29     3.21G   0.01837   0.01068   0.03388        24       640:  62% 126/202 [01:15<00:45,  1.66it/s]
+      8/29     3.21G   0.01856   0.01065    0.0339        21       640:  64% 129/202 [01:17<00:44,  1.64it/s]
+      8/29     3.21G   0.01853   0.01065   0.03384        23       640:  65% 132/202 [01:19<00:41,  1.68it/s]
+      8/29     3.21G   0.01873   0.01069   0.03374        22       640:  67% 136/202 [01:21<00:40,  1.63it/s]
+      8/29     3.21G   0.01869   0.01072   0.03381        31       640:  69% 139/202 [01:23<00:37,  1.68it/s]
+      8/29     3.21G   0.01856   0.01067   0.03375        22       640:  71% 143/202 [01:26<00:34,  1.69it/s]
+      8/29     3.21G   0.01844   0.01065   0.03371        22       640:  72% 146/202 [01:27<00:34,  1.64it/s]
+      8/29     3.21G   0.01849   0.01063   0.03375        22       640:  74% 149/202 [01:29<00:31,  1.66it/s]
+      8/29     3.21G   0.01848   0.01063   0.03379        24       640:  75% 152/202 [01:31<00:30,  1.62it/s]
+      8/29     3.21G    0.0184   0.01062   0.03373        24       640:  77% 156/202 [01:33<00:27,  1.69it/s]
+      8/29     3.21G   0.01844   0.01064   0.03377        21       640:  79% 159/202 [01:35<00:25,  1.68it/s]
+      8/29     3.21G   0.01864   0.01063    0.0339        20       640:  80% 162/202 [01:37<00:24,  1.63it/s]
+      8/29     3.21G   0.01855   0.01065   0.03381        30       640:  82% 166/202 [01:39<00:21,  1.70it/s]
+      8/29     3.21G   0.01893   0.01065   0.03387        25       640:  84% 169/202 [01:41<00:20,  1.63it/s]
+      8/29     3.21G   0.01893   0.01065   0.03387        25       640:  84% 169/202 [01:41<00:20,  1.63it/s]
+      8/29     3.21G   0.01893   0.01065   0.03387        25       640:  84% 169/202 [01:41<00:20,  1.63it/s]
+      8/29     3.21G   0.01893   0.01065   0.03387        25       640:  84% 169/202 [01:41<00:20,  1.63it/s]
+      8/29     3.21G   0.01893   0.01065   0.03387        25       640:  84% 169/202 [01:41<00:20,  1.63it/s]
+      8/29     3.21G   0.01893   0.01065   0.03387        25       640:  84% 169/202 [01:41<00:20,  1.63it/s]
+      8/29     3.21G   0.01893   0.01065   0.03387        25       640:  84% 169/202 [01:41<00:20,  1.63it/s]
+      8/29     3.21G   0.01893   0.01065   0.03387        25       640:  84% 169/202 [01:41<00:20,  1.63it/s]
+      8/29     3.21G   0.01893   0.01065   0.03387        25       640:  84% 169/202 [01:41<00:20,  1.63it/s]
+      8/29     3.21G   0.01893   0.01065   0.03387        25       640:  84% 169/202 [01:41<00:20,  1.63it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s]
+                 all        500        509      0.215       0.81      0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.259      0.212:   0% 0/32 [00:00<?, ?it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   3% 1/32 [00:00<00:12,  2.42it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   3% 1/32 [00:00<00:12,  2.42it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   3% 1/32 [00:00<00:12,  2.42it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   3% 1/32 [00:00<00:12,  2.42it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   3% 1/32 [00:00<00:12,  2.42it/s]
+                 all        500        509      0.201      0.933      0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.267      0.225:   3% 1/32 [00:00<00:12,  2.42it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].42it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].42it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].42it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].42it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].42it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.269      0.217:   0% 0/32 [00:00<?, ?it/s].42it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].42it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].42it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].42it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].42it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].42it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].42it/s]
+                 all        500        509      0.245      0.736      0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.293      0.253:   0% 0/32 [00:00<?, ?it/s].42it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   6% 2/32 [00:00<00:09,  3.22it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   6% 2/32 [00:00<00:09,  3.22it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   6% 2/32 [00:00<00:09,  3.22it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   6% 2/32 [00:00<00:09,  3.22it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   6% 2/32 [00:00<00:09,  3.22it/s]
+                 all        500        509      0.219      0.842      0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.318       0.26:   6% 2/32 [00:00<00:09,  3.22it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   3% 1/32 [00:00<00:09,  3.15it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   3% 1/32 [00:00<00:09,  3.15it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   3% 1/32 [00:00<00:09,  3.15it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   3% 1/32 [00:00<00:09,  3.15it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   3% 1/32 [00:00<00:09,  3.15it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.343      0.276:   3% 1/32 [00:00<00:09,  3.15it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].15it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].15it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].15it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].15it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].15it/s]
+                 all        500        509      0.292      0.787      0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.407      0.336:   0% 0/32 [00:00<?, ?it/s].15it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   3% 1/32 [00:00<00:10,  3.10it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   3% 1/32 [00:00<00:10,  3.10it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   3% 1/32 [00:00<00:10,  3.10it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   3% 1/32 [00:00<00:10,  3.10it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   3% 1/32 [00:00<00:10,  3.10it/s]
+                 all        500        509      0.407       0.74      0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.444       0.38:   3% 1/32 [00:00<00:10,  3.10it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   6% 2/32 [00:00<00:10,  2.77it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   6% 2/32 [00:00<00:10,  2.77it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   6% 2/32 [00:00<00:10,  2.77it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   6% 2/32 [00:00<00:10,  2.77it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   6% 2/32 [00:00<00:10,  2.77it/s]
+                 all        500        509      0.386      0.742      0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.454      0.394:   6% 2/32 [00:00<00:10,  2.77it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].77it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].77it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].77it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].77it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].77it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].77it/s]
+                 all        500        509      0.378      0.874      0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.484      0.422:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size  0.5      0.429:   0% 0/32 [00:00<?, ?it/s].77it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].77it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].77it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].77it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].77it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].77it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.527      0.449:   0% 0/32 [00:00<?, ?it/s].77it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].77it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].77it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].77it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].77it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].77it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].77it/s]
+                 all        500        509      0.461      0.715      0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.602      0.527:   0% 0/32 [00:00<?, ?it/s].77it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   9% 3/32 [00:01<00:09,  2.93it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   9% 3/32 [00:01<00:09,  2.93it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   9% 3/32 [00:01<00:09,  2.93it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   9% 3/32 [00:01<00:09,  2.93it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   9% 3/32 [00:01<00:09,  2.93it/s]
+                 all        500        509      0.511      0.707       0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size 0.63      0.553:   9% 3/32 [00:01<00:09,  2.93it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:  16% 5/32 [00:01<00:08,  3.03it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:  16% 5/32 [00:01<00:08,  3.03it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:  16% 5/32 [00:01<00:08,  3.03it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:  16% 5/32 [00:01<00:08,  3.03it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.672       0.59:  16% 5/32 [00:01<00:08,  3.03it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].03it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].03it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].03it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].03it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].03it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].03it/s]
+                 all        500        509      0.508      0.852      0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.702      0.619:   0% 0/32 [00:00<?, ?it/s].03it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   3% 1/32 [00:00<00:10,  3.06it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   3% 1/32 [00:00<00:10,  3.06it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   3% 1/32 [00:00<00:10,  3.06it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   3% 1/32 [00:00<00:10,  3.06it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   3% 1/32 [00:00<00:10,  3.06it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.741       0.65:   3% 1/32 [00:00<00:10,  3.06it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:  12% 4/32 [00:01<00:09,  2.84it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:  12% 4/32 [00:01<00:09,  2.84it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:  12% 4/32 [00:01<00:09,  2.84it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:  12% 4/32 [00:01<00:09,  2.84it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:  12% 4/32 [00:01<00:09,  2.84it/s]
+                 all        500        509      0.644      0.752      0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.787       0.69:  12% 4/32 [00:01<00:09,  2.84it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].84it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].84it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].84it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].84it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].84it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].84it/s]
+                 all        500        509      0.738       0.76      0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.837      0.741:   0% 0/32 [00:00<?, ?it/s].84it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:  12% 4/32 [00:01<00:09,  2.89it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:  12% 4/32 [00:01<00:09,  2.89it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:  12% 4/32 [00:01<00:09,  2.89it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:  12% 4/32 [00:01<00:09,  2.89it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:  12% 4/32 [00:01<00:09,  2.89it/s]
+                 all        500        509      0.755      0.824      0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.864      0.765:  12% 4/32 [00:01<00:09,  2.89it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:  12% 4/32 [00:01<00:09,  2.91it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:  12% 4/32 [00:01<00:09,  2.91it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:  12% 4/32 [00:01<00:09,  2.91it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:  12% 4/32 [00:01<00:09,  2.91it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+     Epoch   gpu_mem       box       obj       cls    labels  img_size0.856      0.753:  12% 4/32 [00:01<00:09,  2.91it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].91it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].91it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].91it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].91it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].91it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].91it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].91it/s]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95:   0% 0/32 [00:00<?, ?it/s].91it/s]
+         saipa_saina        500        105      0.668      0.848      0.859      0.771:   0% 0/32 [00:00<?, ?it/s].91it/s]
+30 epochs completed in 1.155 hours.    105      0.668      0.848      0.859      0.771:   0% 0/32 [00:00<?, ?it/s].91it/s]
+Optimizer stripped from runs/train/exp17/weights/best.pt, 14.4MB      0.859      0.771:   0% 0/32 [00:00<?, ?it/s].91it/s]
+[34m[1mwandb[39m[22m: - 52.08MB of 52.08MB uploaded (0.00MB deduped).pt, 14.4MB      0.859      0.771:   0% 0/32 [00:00<?, ?it/s].91it/s]
+[34m[1mwandb[39m[22m:                                                                                :   0% 0/32 [00:00<?, ?it/s].91it/s]
+[34m[1mwandb[39m[22m: Synced [33mfanciful-frog-4[39m: [34mhttps://wandb.ai/nahid-ebrahimian/YOLOv5/runs/3n888zrt[39m)/wandb/run-20210831_093547-3n888zrt/logs/debug-internal.log
+Drive already mounted at /content/drive; to attempt to forcibly remount, call drive.mount("/content/drive", force_remount=True).ebug-internal.log
+Drive already mounted at /content/drive; to attempt to forcibly remount, call drive.mount("/content/drive", force_remount=True).ebug-internal.log
+Drive already mounted at /content/drive; to attempt to forcibly remount, call drive.mount("/content/drive", force_remount=True).ebug-internal.log

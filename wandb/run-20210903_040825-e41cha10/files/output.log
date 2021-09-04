@@ -1,0 +1,41 @@
+Overriding model.yaml nc=80 with nc=5
+                 from  n    params  module                                  arguments
+  0                -1  1      5280  models.common.Focus                     [3, 48, 3]
+  1                -1  1     41664  models.common.Conv                      [48, 96, 3, 2]
+  2                -1  2     65280  models.common.C3                        [96, 96, 2]
+  3                -1  1    166272  models.common.Conv                      [96, 192, 3, 2]
+  4                -1  6    629760  models.common.C3                        [192, 192, 6]
+  5                -1  1    664320  models.common.Conv                      [192, 384, 3, 2]
+  6                -1  6   2512896  models.common.C3                        [384, 384, 6]
+  7                -1  1   2655744  models.common.Conv                      [384, 768, 3, 2]
+  8                -1  1   1476864  models.common.SPP                       [768, 768, [5, 9, 13]]
+  9                -1  2   4134912  models.common.C3                        [768, 768, 2, False]
+ 10                -1  1    295680  models.common.Conv                      [768, 384, 1, 1]
+ 11                -1  1         0  torch.nn.modules.upsampling.Upsample    [None, 2, 'nearest']
+ 12           [-1, 6]  1         0  models.common.Concat                    [1]
+ 13                -1  2   1182720  models.common.C3                        [768, 384, 2, False]
+ 14                -1  1     74112  models.common.Conv                      [384, 192, 1, 1]
+ 15                -1  1         0  torch.nn.modules.upsampling.Upsample    [None, 2, 'nearest']
+ 16           [-1, 4]  1         0  models.common.Concat                    [1]
+ 17                -1  2    296448  models.common.C3                        [384, 192, 2, False]
+ 18                -1  1    332160  models.common.Conv                      [192, 192, 3, 2]
+ 19          [-1, 14]  1         0  models.common.Concat                    [1]
+ 20                -1  2   1035264  models.common.C3                        [384, 384, 2, False]
+ 21                -1  1   1327872  models.common.Conv                      [384, 384, 3, 2]
+ 22          [-1, 10]  1         0  models.common.Concat                    [1]
+ 23                -1  2   4134912  models.common.C3                        [768, 768, 2, False]
+ 24      [17, 20, 23]  1     40410  models.yolo.Detect                      [5, [[10, 13, 16, 30, 33, 23], [30, 61, 62, 45, 59, 119], [116, 90, 156, 198, 373, 326]], [192, 384, 768]]
+Model Summary: 391 layers, 21072570 parameters, 21072570 gradients
+Transferred 500/506 items from yolov5m.pt
+Scaled weight_decay = 0.0005
+[34m[1moptimizer:[39m[22m SGD with parameter groups 83 weight, 86 weight (no decay), 86 bias
+[34m[1malbumentations: [39m[22mversion 1.0.3 required by YOLOv5, but version 0.1.12 is currently installed
+Plotting labels...
+[34m[1mtrain: [39m[22mScanning '/content/drive/MyDrive/Yolov5ObjectDetection/Dataset/Train/labels.cache' images and labels... 1600 found, 10 missing, 0 empty, 0 corrupted: 100% 1610/1610 [00:00<?, ?it/s]
+[34m[1mval: [39m[22mScanning '/content/drive/MyDrive/Yolov5ObjectDetection/Dataset/Val/labels.cache' images and labels... 500 found, 0 missing, 0 empty, 0 corrupted: 100% 500/500 [00:00<?, ?it/s]
+[34m[1mautoanchor: [39m[22mAnalyzing anchors... anchors/target = 2.26, Best Possible Recall (BPR) = 1.0000
+Image sizes 640 train, 640 val
+Using 2 dataloader workers
+Logging results to runs/train/exp19
+Starting training for 30 epochs...
+     Epoch   gpu_mem       box       obj       cls    labels  img_size
