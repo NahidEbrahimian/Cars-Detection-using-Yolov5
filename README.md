@@ -34,7 +34,7 @@ names: ['iranKhodro_dena', 'kia_cerato', 'mazda_3', 'peugeot_206', 'saipa_saina'
 
 You can change this sections in Yolov5/data/coco128.yaml.
 
-4- Train YOLOv5s on Dataset for 30 epochs using folowing command:
+4- Train YOLOv5s on Dataset for 30 epochs using following command:
 
 ```
 $ python train.py --img 640 --batch 16 --epochs 30 --data coco128.yaml --weights yolov5s.pt
