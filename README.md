@@ -8,14 +8,12 @@
 
 ```
 https://github.com/NahidEbrahimian/Cars-Detection-using-Yolov5.git
-
 ```
 
 2- In ```./Cars-Detection-using-Yolov5``` directory, run the following command to install requirements:
 
 ```
 !pip install -U -r requirements.txt
-
 ```
 
 #
@@ -39,21 +37,18 @@ Datast link: [iranians cars](https://drive.google.com/drive/folders/1k_uzXzDyjEQ
 
 ```
 https://github.com/NahidEbrahimian/Cars-Detection-using-Yolov5.git
-
 ```
 
 2- In ```./Cars-Detection-using-Yolov5``` directory, run the following command to install requirements:
 
 ```
 !pip install -U -r requirements.txt
-
 ```
 
 3- For training, in ```./Cars-Detection-using-Yolov5``` directory, train YOLOv5s on Dataset for 30 epochs using following command:
 
 ```
 !python train.py --img 640 --batch 8 --epochs 30 --data data/coco128.yaml --weights yolov5s.pt
-
 ```
 
 - For train on your dataset, you must creat dataset.yaml file.
@@ -79,6 +74,14 @@ For inference, in ```./Cars-Detection-using-Yolov5``` directory, run the followi
 
 ```
 !python inference.py --weights runs/train/exp13/weights/last.pt --img 244 --conf 0.4 --source inputs/iranKhodro_dena26.jpg
+```
+#
 
+# Test
+
+For test, in ```./Cars-Detection-using-Yolov5``` directory, run the following command. you must set your test data path in `coco128.yaml` file that prepared in Train step.
+
+```
+!python val.py --data coco128.yaml --weightsruns/train/exp13/weights/last.pt --img 640
 ```
 
