@@ -16,8 +16,6 @@ https://github.com/NahidEbrahimian/Cars-Detection-using-Yolov5.git
 !pip install -U -r requirements.txt
 ```
 
-#
-
 # Dataset
 
 Dataset contains 2100 images of the cars in five categories.
@@ -27,9 +25,7 @@ Datast link: [iranians cars](https://drive.google.com/drive/folders/1k_uzXzDyjEQ
 ```
 ../Dataset/images/im0.jpg  # image
 ../Dataset/labels/im0.txt  # label
-
 ```
-#
 
 # Train
 
@@ -66,8 +62,6 @@ names: ['iranKhodro_dena', 'kia_cerato', 'mazda_3', 'peugeot_206', 'saipa_saina'
 ```
 You can change this sections in ```.data/coco128.yaml```.
 
-#
-
 # Inference
 
 For inference, in ```./Cars-Detection-using-Yolov5``` directory, run the following command.
@@ -75,7 +69,6 @@ For inference, in ```./Cars-Detection-using-Yolov5``` directory, run the followi
 ```
 !python inference.py --weights runs/train/exp13/weights/last.pt --img 244 --conf 0.4 --source inputs/iranKhodro_dena26.jpg
 ```
-#
 
 # Test
 
