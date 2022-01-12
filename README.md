@@ -75,6 +75,6 @@ For inference, in ```./Cars-Detection-using-Yolov5``` directory, run the followi
 For test, in ```./Cars-Detection-using-Yolov5``` directory, run the following command. you must set your test data path in `coco128.yaml` file that prepared in Train step.
 
 ```
-!python val.py --data coco128.yaml --weightsruns/train/exp13/weights/last.pt --img 640
+!python val.py --data coco128.yaml --weights runs/train/exp13/weights/last.pt --img 640
 ```
 
