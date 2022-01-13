@@ -67,7 +67,7 @@ You can change this sections in ```.data/coco128.yaml```.
 For inference, in ```./Cars-Detection-using-Yolov5``` directory, run the following command.
 
 ```
-!python inference.py --weights runs/train/exp13/weights/last.pt --img 244 --conf 0.4 --source inputs/iranKhodro_dena26.jpg
+!python inference.py --weights runs/train/exp13/weights/last.pt --img 640 --conf 0.4 --source inputs/iranKhodro_dena26.jpg
 ```
 
 # Test
