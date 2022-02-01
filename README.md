@@ -77,4 +77,3 @@ For test, in ```./Cars-Detection-using-Yolov5``` directory, run the following co
 ```
 !python val.py --data coco128.yaml --weights runs/train/exp13/weights/last.pt --img 640
 ```
-
