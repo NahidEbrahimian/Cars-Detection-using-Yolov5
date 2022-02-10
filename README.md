@@ -83,11 +83,6 @@ For test, in ```./Cars-Detection-using-Yolov5``` directory, run the following co
 1- Comparision inference time of Pytorch model and TensorRT_FP32
 
 
-| Model | Pytorch(ms)	 | TensorRT_FP32(ms) | Pytorch Model Size(MB) | TensorRT_FP32 Model Size(MB) |
-| ----- | -----| ----- | -----| ----- |
-| Yolov5s | 8.6	| 8.5 | 13.68 | 38.2 |
-
-
-| Model | Pytorch(ms)	 | TensorRT_FP16(ms) | Pytorch Model Size(MB) | TensorRT_FP16 Model Size(MB) |
-| ----- | -----| ----- | -----| ----- |
-| Yolov5s | 	|  |  |  |
+| Model | Pytorch(ms)	 | TensorRT_FP32(ms) |
+| ----- | -----| ----- |
+| Yolov5s | 8.6	| 8.5 |
