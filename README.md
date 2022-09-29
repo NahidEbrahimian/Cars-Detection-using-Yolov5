@@ -20,7 +20,7 @@ https://github.com/NahidEbrahimian/Cars-Detection-using-Yolov5.git
 
 Dataset contains 2100 images of the cars in five categories.
 
-Datast link: [iranians cars](https://drive.google.com/drive/folders/1KJS3fYkVPzRdG4-eA8Ej-UoH1ATk6ypw?usp=sharing)
+Datast link: [iranians cars](https://drive.google.com/file/d/1e9zL1hRwSbj7-I2ZGv9wDw-w9pwf4Na5/view?usp=sharing)
 
 ```
 ../Dataset/images/im0.jpg  # image
